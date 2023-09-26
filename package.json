@@ -12,14 +12,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.6",
+    "@types/react-redux": "^7.1.26",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.2",
+    "redux-mock-store": "^1.5.4"
   },
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
     "@types/node": "^20.7.0",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "@types/redux-mock-store": "^1.0.3",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
