@@ -1,13 +1,14 @@
-import { RootState } from "./state/store";
-import { useSelector, useDispatch } from "react-redux";
+import { Routes, Route } from "react-router-dom";
 
-import { decrement, increment } from "./state/stepperSlice";
+import { AccomodationPage } from "./pages/accomodation-page";
+import { OwnerPage } from "./pages/owner-page";
+import { ResumePage } from "./pages/resume-page";
 
 const App = () => {
-  const step = useSelector((state: RootState) => state.stepper.step);
+  /*  const step = useSelector((state: RootState) => state.stepper.step);
   const dispatch = useDispatch();
 
-  return (
+  {
     <div>
       <h1 className="text-3xl font-bold underline">Hello world!</h1>
       <button
@@ -23,7 +24,16 @@ const App = () => {
       >
         Decrement
       </button>
-    </div>
+    </div>;
+  } */
+
+  return (
+    <Routes>
+      <Route path="accomodation" element={<AccomodationPage />} />
+      <Route path="owner" element={<OwnerPage />} />
+      <Route path="resume" element={<ResumePage />} />
+      <Route path="*" element={<AccomodationPage />} />
+    </Routes>
   );
 };
 
