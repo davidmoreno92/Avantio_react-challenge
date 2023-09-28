@@ -7,3 +7,9 @@ export type AccomodationType = {
   type: string;
   photos: PictureType[];
 };
+
+export enum TypeOptions {
+  Apartment = "apartment",
+  Villa = "villa",
+  House = "house",
+}
