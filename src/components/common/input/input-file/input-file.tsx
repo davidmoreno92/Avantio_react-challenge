@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-import { MAX_FILE_SIZE } from "../../../../validations/stepperValidations";
+import { MAX_FILE_SIZE } from "../../../../validations/formValidations";
 
 import { Input } from "../input";
 

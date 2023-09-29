@@ -1,20 +1,17 @@
-import { AccomodationType } from "../types/accomodation-type";
-import { PictureType } from "../types/picture-type";
+import { useSelector } from "react-redux";
+
+import { Button } from "../components/common/button/button";
+
+import { RootState } from "../state/store";
 
 export const ResumePage: React.FC = () => {
-  const resume: AccomodationType = {
-    name: "Accomodation name",
-    address: "Address 123, 456, Spain",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce consequat nunc id tempus luctus. Fusce sed massa posuere dui finibus finibus sagittis vel ante. Pellentesque eget accumsan augue. Suspendisse tincidunt sollicitudin neque, nec ornare justo sodales in. Donec in erat posuere, blandit libero sit amet, scelerisque ante. Pellentesque in congue quam. Etiam cursus elit nisi, at efficitur velit commodo at. Ut libero sem, euismod sed sagittis a, scelerisque a massa. Curabitur rhoncus ligula dolor, nec dictum dui elementum eget. Etiam non augue velit. Donec venenatis quis sem at interdum.",
-    type: "Accomodation type",
-    photos: [{ url: "assets/pic.jpg" }, { url: "assets/pic.jpg" }],
-  };
+  const formData = useSelector((state: RootState) => state.form);
 
-  const owner = {
-    name: "Name Surname",
-    email: "email@email.com",
-    phone: "123456789",
+  const { owner: _, ...accomodationResume } = formData;
+  _;
+
+  const handleSubmit = () => {
+    console.log("Form data", formData);
   };
 
   return (
@@ -22,37 +19,43 @@ export const ResumePage: React.FC = () => {
       <h2>Resume</h2>
       <div className="flex flex-col gap-y-2">
         <h3>Accomodation</h3>
-        {generateResume(resume)}
+        {generateResume(accomodationResume)}
       </div>
       <div className="flex flex-col gap-y-2">
         <h3>Owner</h3>
-        {generateResume(owner)}
+        {generateResume(formData.owner)}
       </div>
+      <Button extraClasses="mt-5" onClickButton={handleSubmit}>
+        Submit
+      </Button>
     </div>
   );
 };
 
+//TODO: Create a component to display generateResume if reused.
 const generateResume = (object: object) => {
   return Object.entries(object).map((field) => {
-    const fieldIsArray = field[1] instanceof Array;
+    const key = field[0];
+    const value = field[1];
+    const fieldIsArray = value instanceof Array;
 
     const isPrintableValue =
       typeof field[1] === "string" || typeof field[1] === "number";
 
     return (
-      <span key={field[0]}>
-        <b className="capitalize">{field[0]}:</b>
+      value && (
+        <span key={key}>
+          <b className="capitalize">{key}: </b>
 
-        {fieldIsArray
-          ? Object.entries(
-              (field[1] as PictureType[]).map((subField) => {
-                return <img key={subField.url} src={subField.url} />;
+          {fieldIsArray
+            ? value.map((image: string) => {
+                return <img key={image} src={image} />;
               })
-            )
-          : isPrintableValue
-          ? (field[1] as string)
-          : ""}
-      </span>
+            : isPrintableValue
+            ? (value as string)
+            : ""}
+        </span>
+      )
     );
   });
 };

@@ -8,10 +8,10 @@ import { Input } from "../components/common/input/input";
 import { InputFile } from "../components/common/input/input-file/input-file";
 import { Select } from "../components/common/select/select";
 import { Textarea } from "../components/common/textarea/textarea";
-
-import { accomodationValidations } from "../validations/stepperValidations";
-
 import { TypeOptions } from "../types/accomodation-type";
+
+import { accomodationValidations } from "../validations/formValidations";
+import { saveAccomodation } from "../state/formSlice";
 
 export const AccomodationPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -29,16 +29,19 @@ export const AccomodationPage: React.FC = () => {
     handleBlur,
     touched,
   } = useFormik({
+    validateOnChange: false,
+    validateOnBlur: true,
     initialValues: {
-      name: "",
-      address: "",
-      description: "",
-      type: "",
+      name: undefined,
+      address: undefined,
+      description: undefined,
+      type: undefined,
       files: [],
     },
     validationSchema: accomodationValidations,
     onSubmit: () => {
-      dispatch(values) && navigate("owner");
+      console.log(values);
+      dispatch(saveAccomodation(values)) && navigate("owner");
     },
   });
 
