@@ -43,7 +43,8 @@ const generateResume = (object: object) => {
       typeof field[1] === "string" || typeof field[1] === "number";
 
     return (
-      value && (
+      (fieldIsArray && value.length > 0) ||
+      (isPrintableValue && value && (
         <span key={key}>
           <b className="capitalize">{key}: </b>
 
@@ -55,7 +56,7 @@ const generateResume = (object: object) => {
             ? (value as string)
             : ""}
         </span>
-      )
+      ))
     );
   });
 };
