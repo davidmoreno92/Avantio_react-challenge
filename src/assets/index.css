@@ -2,27 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/*TODO: Apply fix
- [vite:css] Nested CSS was detected, but CSS nesting has not been configured correctly.
-Please enable a CSS nesting plugin *before* Tailwind in your configuration.
-See how here: https://tailwindcss.com/docs/using-with-preprocessors#nesting
-
-KNOWN BUG
-*/
-
 body {
   color: var(--text-color);
   margin: 2rem;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-h3 {
-  font-size: 1.25rem;
-  font-weight: bold;
+  h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
 }
 
 :root {
