@@ -10,6 +10,7 @@ type InputType = {
   error?: string;
   multiple?: boolean;
   customRef?: React.RefObject<HTMLInputElement>;
+  ariaLabeled?: string;
   onChangeInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 };
@@ -24,6 +25,7 @@ export const Input: React.FC<InputType> = ({
   error,
   multiple,
   customRef,
+  ariaLabeled,
   onChangeInput,
   onBlur,
 }) => {
@@ -43,6 +45,7 @@ export const Input: React.FC<InputType> = ({
         onBlur={onBlur}
         multiple={multiple}
         ref={customRef || internalRef}
+        aria-label={ariaLabeled}
       />
       {error && <span className="text-red-400">{error}</span>}
     </label>
