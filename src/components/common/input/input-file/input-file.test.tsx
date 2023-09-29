@@ -61,4 +61,20 @@ describe("<InputFile/>", () => {
 
     expect(mockOnBlur).toBeCalledTimes(1);
   });
+
+  test("should call onChange", () => {
+    render(
+      <InputFile
+        name={testName}
+        error={error}
+        onChangeInput={mockOnChange}
+        onBlur={mockOnBlur}
+      />
+    );
+    const file = new File(["(⌐□_□)"], "chucknorris.png", { type: "image/png" });
+    const input = screen.getByLabelText(testName);
+    fireEvent.change(input, { target: { files: file } });
+
+    expect(mockOnChange).toBeCalledTimes(1);
+  });
 });

@@ -41,7 +41,6 @@ export const AccomodationPage: React.FC = () => {
     },
     validationSchema: accomodationValidations,
     onSubmit: () => {
-      console.log(values);
       dispatch(saveAccomodation(values)) && navigate("owner");
     },
   });
