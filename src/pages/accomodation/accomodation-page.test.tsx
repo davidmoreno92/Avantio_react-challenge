@@ -27,4 +27,6 @@ describe("<AccomodationPage/>", () => {
     expect(files).toBeTruthy();
     expect(button).toBeTruthy();
   });
+
+  //TODO: More tests.. mock state, test values are printed when changing, validations are correct..
 });

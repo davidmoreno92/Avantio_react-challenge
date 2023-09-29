@@ -23,4 +23,6 @@ describe("<OwnerPage/>", () => {
     expect(fieldsNumber).toEqual(3);
     expect(button).toEqual(1);
   });
+
+  //TODO: More tests.. mock state, test values are printed when changing, validations are correct..
 });

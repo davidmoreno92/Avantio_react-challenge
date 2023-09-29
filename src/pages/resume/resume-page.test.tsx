@@ -23,4 +23,6 @@ describe("<ResumePage/>", () => {
     expect(screen.getByText("Owner")).toBeTruthy();
     expect(sendButton).toBeTruthy();
   });
+
+  //TODO: More tests.. mock state, test values are printed, send form and recieve log.
 });
