@@ -1,16 +1,10 @@
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
+import { createRoot } from "react-dom/client";
+import r2wc from "@r2wc/react-to-web-component";
 
-import "./assets/index.css";
+import { App } from "./App";
 
-import App from "./App.tsx";
-import { store } from "./state/store.tsx";
+const WizardMF = r2wc(App);
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
-);
+customElements.define("wizard-mf", WizardMF);
+
+createRoot(document.getElementById("root")!).render(<App />);
