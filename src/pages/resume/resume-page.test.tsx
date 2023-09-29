@@ -16,9 +16,11 @@ describe("<ResumePage/>", () => {
       </Provider>
     );
 
+    const sendButton = screen.getByRole("button", { name: "Submit" });
+
     expect(screen.getByText("Resume")).toBeTruthy();
     expect(screen.getByText("Accomodation")).toBeTruthy();
     expect(screen.getByText("Owner")).toBeTruthy();
-    expect(screen.getByRole("button")).toBeTruthy();
+    expect(sendButton).toBeTruthy();
   });
 });
