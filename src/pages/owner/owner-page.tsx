@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 
+import { AnimatedPage } from "../../components/common/animated-page/animated-page";
 import { Button } from "../../components/common/button/button";
 import { Input } from "../../components/common/input/input";
 
@@ -39,41 +40,43 @@ export const OwnerPage: React.FC = () => {
   );
 
   return (
-    <div className="flex flex-col gap-y-4">
-      <h2>Owner</h2>
-      <form>
-        <fieldset className="flex flex-col  gap-y-4">
-          <Input
-            name="name"
-            label="Name"
-            onChangeInput={handleChange}
-            onBlur={handleBlur}
-            error={errors?.name}
-          />
-          <Input
-            name="email"
-            label="Email"
-            onChangeInput={handleChange}
-            onBlur={handleBlur}
-            error={errors?.email}
-          />
-          <Input
-            name="phone"
-            label="Phone"
-            type="tel"
-            onChangeInput={handleChange}
-            onBlur={handleBlur}
-            error={errors?.phone}
-          />
-          <Button
-            disabled={!isValid || !hasTouchedAnyField}
-            extraClasses="mt-5"
-            onClickButton={() => handleSubmit()}
-          >
-            Next
-          </Button>
-        </fieldset>
-      </form>
-    </div>
+    <AnimatedPage>
+      <div className="flex flex-col gap-y-4">
+        <h2>Owner</h2>
+        <form>
+          <fieldset className="flex flex-col  gap-y-4">
+            <Input
+              name="name"
+              label="Name"
+              onChangeInput={handleChange}
+              onBlur={handleBlur}
+              error={errors?.name}
+            />
+            <Input
+              name="email"
+              label="Email"
+              onChangeInput={handleChange}
+              onBlur={handleBlur}
+              error={errors?.email}
+            />
+            <Input
+              name="phone"
+              label="Phone"
+              type="tel"
+              onChangeInput={handleChange}
+              onBlur={handleBlur}
+              error={errors?.phone}
+            />
+            <Button
+              disabled={!isValid || !hasTouchedAnyField}
+              extraClasses="mt-5"
+              onClickButton={() => handleSubmit()}
+            >
+              Next
+            </Button>
+          </fieldset>
+        </form>
+      </div>
+    </AnimatedPage>
   );
 };
