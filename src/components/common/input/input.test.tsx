@@ -1,12 +1,15 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 import { Input } from "./input";
 
 describe("<Input/>", () => {
+  const mockOnChange = vi.fn();
+
   const testName = "test-input-name";
+
   test("should render button", () => {
-    render(<Input name={testName} />);
+    render(<Input name={testName} onChangeInput={mockOnChange} />);
 
     expect(screen.getByText(new RegExp(testName, "i"))).toBeDefined();
   });

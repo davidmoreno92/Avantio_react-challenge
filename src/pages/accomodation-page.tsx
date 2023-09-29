@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 import { Button } from "../components/common/button/button";
 import { Input } from "../components/common/input/input";
+import { InputFile } from "../components/common/input/input-file/input-file";
 import { Select } from "../components/common/select/select";
+import { Textarea } from "../components/common/textarea/textarea";
 
 import { accomodationValidations } from "../validations/stepperValidations";
 
@@ -15,15 +17,24 @@ export const AccomodationPage: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [images, setImages] = useState<File[]>();
   const [errorImage, setErrorImage] = useState<string>();
 
-  const { values, isValid, errors, handleChange, handleSubmit } = useFormik({
+  const {
+    values,
+    isValid,
+    errors,
+    setFieldValue,
+    handleChange,
+    handleSubmit,
+    handleBlur,
+    touched,
+  } = useFormik({
     initialValues: {
       name: "",
       address: "",
       description: "",
       type: "",
+      files: [],
     },
     validationSchema: accomodationValidations,
     onSubmit: () => {
@@ -33,6 +44,10 @@ export const AccomodationPage: React.FC = () => {
 
   const typeOptions = Object.values(TypeOptions);
 
+  const hasTouchedAnyField = Object.values(touched).some(
+    (touched) => !!touched
+  );
+
   return (
     <div className="flex flex-col gap-y-4">
       <h2>Accomodation</h2>
@@ -40,45 +55,52 @@ export const AccomodationPage: React.FC = () => {
         <fieldset className="flex flex-col  gap-y-4">
           <Input
             name="name"
+            label="Name"
             error={errors.name}
             onChangeInput={handleChange}
+            onBlur={handleBlur}
             required
           />
           <Input
             name="address"
+            label="Address"
             error={errors.address}
             onChangeInput={handleChange}
+            onBlur={handleBlur}
             required
           />
-          <Input
+          <Textarea
             name="description"
+            label="Description"
             error={errors.description}
-            onChangeInput={handleChange}
+            onChangeText={handleChange}
+            onBlur={handleBlur}
           />
           <Select
             name="type"
+            label="Type"
             onChangeSelect={handleChange}
+            onBlur={handleBlur}
             error={errors.type}
             options={typeOptions}
             required
           />
-          <Input
-            name="images"
+          <InputFile
+            name="files"
+            label="Files"
             type="file"
             error={errorImage}
             multiple
-            onChangeInputFile={(image, error) => {
-              if (error) {
-                setImages([]);
-                return setErrorImage(error);
-              }
+            onChangeInput={(files, error) => {
+              if (error) return setErrorImage(error);
 
-              setErrorImage(undefined);
-              return setImages((oldImages) => [...(oldImages || []), image]);
+              errorImage && setErrorImage(undefined);
+              return setFieldValue("files", files);
             }}
+            onBlur={handleBlur}
           />
           <Button
-            disabled={!isValid}
+            disabled={!isValid || !!errorImage || !hasTouchedAnyField}
             extraClasses="mt-5"
             onClickButton={() => handleSubmit()}
           >
