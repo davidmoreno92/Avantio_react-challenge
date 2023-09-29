@@ -1,8 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import { AccomodationPage } from "./pages/accomodation-page";
-import { OwnerPage } from "./pages/owner-page";
-import { ResumePage } from "./pages/resume-page";
+import { AccomodationPage } from "./pages/accomodation/accomodation-page";
+import { OwnerPage } from "./pages/owner/owner-page";
+import { ResumePage } from "./pages/resume/resume-page";
 
 const App: React.FC = () => {
   return (

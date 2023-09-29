@@ -3,15 +3,15 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Button } from "../components/common/button/button";
-import { Input } from "../components/common/input/input";
-import { InputFile } from "../components/common/input/input-file/input-file";
-import { Select } from "../components/common/select/select";
-import { Textarea } from "../components/common/textarea/textarea";
-import { TypeOptions } from "../types/accomodation-type";
+import { Button } from "../../components/common/button/button";
+import { Input } from "../../components/common/input/input";
+import { InputFile } from "../../components/common/input/input-file/input-file";
+import { Select } from "../../components/common/select/select";
+import { Textarea } from "../../components/common/textarea/textarea";
+import { TypeOptions } from "../../types/accomodation-type";
 
-import { accomodationValidations } from "../validations/formValidations";
-import { saveAccomodation } from "../state/formSlice";
+import { accomodationValidations } from "../../validations/formValidations";
+import { saveAccomodation } from "../../state/formSlice";
 
 export const AccomodationPage: React.FC = () => {
   const dispatch = useDispatch();

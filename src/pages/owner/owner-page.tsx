@@ -2,11 +2,11 @@ import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 
-import { Button } from "../components/common/button/button";
-import { Input } from "../components/common/input/input";
+import { Button } from "../../components/common/button/button";
+import { Input } from "../../components/common/input/input";
 
-import { ownerValidations } from "../validations/formValidations";
-import { saveOwner } from "../state/formSlice";
+import { ownerValidations } from "../../validations/formValidations";
+import { saveOwner } from "../../state/formSlice";
 
 export const OwnerPage: React.FC = () => {
   const dispatch = useDispatch();

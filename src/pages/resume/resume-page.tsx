@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 
-import { Button } from "../components/common/button/button";
+import { Button } from "../../components/common/button/button";
 
-import { RootState } from "../state/store";
+import { RootState } from "../../state/store";
 
 export const ResumePage: React.FC = () => {
   const formData = useSelector((state: RootState) => state.form);
