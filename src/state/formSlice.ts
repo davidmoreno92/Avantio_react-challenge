@@ -1,16 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { OwnerType } from "../types/owner-type";
+import { FormType } from "../types/form-type";
 
-export type FormState = {
-  name: string;
-  address: string;
-  description: string;
-  type: string;
-  files: string[];
-  owner: OwnerType;
-};
-
-const initialState: FormState = {
+const initialState: FormType = {
   name: "",
   address: "",
   description: "",

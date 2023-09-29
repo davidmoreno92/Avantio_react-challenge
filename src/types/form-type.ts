@@ -1,11 +1,16 @@
-import { PictureType } from "./picture-type";
-
-export type AccomodationType = {
+export type FormType = {
   name: string;
   address: string;
   description: string;
   type: string;
-  photos: PictureType[];
+  files: string[];
+  owner: OwnerType;
+};
+
+export type OwnerType = {
+  name: string;
+  email: string;
+  phone: number | undefined;
 };
 
 export enum TypeOptions {
