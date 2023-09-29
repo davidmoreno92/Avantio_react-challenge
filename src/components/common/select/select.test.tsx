@@ -96,4 +96,30 @@ describe("<Select/>", () => {
 
     expect(mockOnBlur).toBeCalledTimes(1);
   });
+
+  test("should print * if required is passed", () => {
+    render(
+      <Select
+        name={testName}
+        error={error}
+        onChangeSelect={mockOnChangeSelect}
+        options={mockedOptions}
+        required
+      />
+    );
+    expect(screen.queryByText("*")).toBeTruthy();
+  });
+
+  test("should not print * by default", async () => {
+    render(
+      <Select
+        name={testName}
+        error={error}
+        onChangeSelect={mockOnChangeSelect}
+        options={mockedOptions}
+      />
+    );
+
+    expect(screen.queryByText("*")).toBeFalsy();
+  });
 });

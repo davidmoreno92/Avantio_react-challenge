@@ -19,7 +19,7 @@ export const Select: React.FC<Props> = ({
 }) => {
   return (
     <label htmlFor={name}>
-      {label || name} {required && "*"}
+      {label || name} {required && <span>*</span>}
       <select
         id={name}
         name={name}

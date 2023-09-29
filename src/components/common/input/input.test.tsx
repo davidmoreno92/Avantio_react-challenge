@@ -80,4 +80,30 @@ describe("<Input/>", () => {
 
     expect(mockOnBlur).toBeCalledTimes(1);
   });
+
+  test("should print * if required is passed", () => {
+    render(
+      <Input
+        name={testName}
+        error={error}
+        onChangeInput={mockOnChange}
+        onBlur={mockOnBlur}
+        required
+      />
+    );
+    expect(screen.queryByText("*")).toBeTruthy();
+  });
+
+  test("should not print * by default", async () => {
+    render(
+      <Input
+        name={testName}
+        error={error}
+        onChangeInput={mockOnChange}
+        onBlur={mockOnBlur}
+      />
+    );
+
+    expect(screen.queryByText("*")).toBeFalsy();
+  });
 });

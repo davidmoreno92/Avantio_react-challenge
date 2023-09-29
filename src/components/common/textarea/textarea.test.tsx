@@ -69,4 +69,15 @@ describe("<Textarea/>", () => {
 
     expect(mockOnBlur).toBeCalledTimes(1);
   });
+
+  test("should print * if required is passed", () => {
+    render(<Textarea name={testName} onChangeText={mockOnChange} required />);
+    expect(screen.queryByText("*")).toBeTruthy();
+  });
+
+  test("should not print * by default", async () => {
+    render(<Textarea name={testName} onChangeText={mockOnChange} />);
+
+    expect(screen.queryByText("*")).toBeFalsy();
+  });
 });
