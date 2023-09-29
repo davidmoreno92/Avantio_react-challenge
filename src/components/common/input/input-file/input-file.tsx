@@ -80,6 +80,7 @@ export const InputFile: React.FC<InputType> = ({
       error={error}
       required={required}
       onBlur={onBlur}
+      ariaLabeled={name}
     />
   );
 };
